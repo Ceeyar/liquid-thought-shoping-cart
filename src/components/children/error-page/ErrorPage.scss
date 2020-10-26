@@ -1,0 +1,12 @@
+@import './../../../Styles.scss';
+
+.no-match {
+
+    color: $white;
+    height: 100vh;
+    padding-top: 6px;
+    font-weight: bolder;
+    background-size: auto;
+    background-position-x: center;
+    background-image: url('./../../../assets/404-error-Page.gif');
+}
