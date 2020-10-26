@@ -1,6 +1,6 @@
 import Home from "../components/home/Home";
 import Products from "../components/Products";
-import Product from "../components/children/product/Product";
+import ProductPreview from "../components/children/product-modal/ProductPreview";
 import noMatch from "../components/children/error-page/ErrorPage";
 
 const Routes = [
@@ -19,7 +19,7 @@ const Routes = [
     {
       title: "Product Details",
       path: "/product",
-      component: Product,
+      component: ProductPreview,
       exact: true
     },
     {
