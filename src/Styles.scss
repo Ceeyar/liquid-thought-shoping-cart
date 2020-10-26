@@ -1,1 +1,58 @@
 @import './Variables.scss';
+
+
+// import using ~
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/elements/button.sass";
+@import "~bulma/sass/layout/section.sass";
+
+
+//start using $variables now
+h1, h2 {
+    color: $primaryColor;
+}
+
+.shop {
+    
+    &.brand {
+        margin: 10px;
+    }
+
+    &.header {
+        border: solid 1px $primaryColor;
+        margin: 0;
+    }
+
+    &.font-icon {
+        padding-top: 3px;
+        font-size: 15px;
+    }
+}
+
+.children-content {
+
+    padding-top: 40px;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.pb {
+    padding-bottom: 20px;
+}
+
+.mx-default {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.my-0 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
