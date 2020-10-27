@@ -45,7 +45,6 @@ class Products extends Component {
             adaptiveHeight: true
         };
 
-        
         const promoProducts = this.state.products.map((product, index) => {
 
             //only promote the first 4 products available products

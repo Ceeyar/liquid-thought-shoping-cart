@@ -7,10 +7,10 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU001",
         "image": "https://via.placeholder.com/600/56a8c2",
-        "description": "something here",
+        "description": "Coriander is an annual herb in the family Apiaceae. It is also known as Chinese parsley, dhania or cilantro.",
         "unitPrice": 210,
         "currency": "ZAR",
-        "name": "product 1"
+        "name": "Coriander"
     },
     {
         "id": "5f95dc4bd15a338e4b8053ac",
@@ -19,10 +19,10 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU002",
         "image": "https://via.placeholder.com/600/92c952",
-        "description": "something here",
+        "description": "Chard or Swiss chard is a green leafy vegetable. In the cultivars of the Flavescens-Group, the leaf stalks are large and often prepared separately from the leaf blade",
         "unitPrice": 221,
         "currency": "ZAR",
-        "name": "product 2"
+        "name": "Beetroot"
     },
     {
         "id": "5f95dc4b5ef1bc55c0393a0b",
@@ -31,10 +31,10 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU003",
         "image": "https://via.placeholder.com/600/8985dc",
-        "description": "something here",
+        "description": "Lemon, Citrus limon, is a species of small evergreen tree in the flowering plant family Rutaceae, native to South Asia, primarily North eastern India.",
         "unitPrice": 232,
         "currency": "ZAR",
-        "name": "product 3"
+        "name": "Lemons"
     },
     {
         "id": "5f95dc4b3a2162fb46184120",
@@ -43,10 +43,10 @@ export const products = [
         "isAvailable": false,
         "sku": "SKU004",
         "image": "https://via.placeholder.com/600/8f209a",
-        "description": "something here",
+        "description": "Lettuce is an annual plant of the daisy family, Asteraceae. It is most often grown as a leaf vegetable, but sometimes for its stem and seeds. ",
         "unitPrice": 243,
         "currency": "ZAR",
-        "name": "product 4"
+        "name": "Lettuce"
     },
     {
         "id": "5f95dc4b654866c51ca71e1c",
@@ -55,10 +55,10 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU005",
         "image": "https://via.placeholder.com/600/5e3a73",
-        "description": "something here",
+        "description": "Avocado, a tree likely originating from south central Mexico, is classified as a member of the flowering plant family Lauraceae. The fruit of the plant, also called an avocado",
         "unitPrice": 254,
         "currency": "ZAR",
-        "name": "product 5"
+        "name": "Avocado"
     },
     {
         "id": "5f95dc4bd5991a9c0e2e59c8",
@@ -67,10 +67,10 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU006",
         "image": "https://via.placeholder.com/600/474645",
-        "description": "something here",
+        "description": "Orange is the fruit of various citrus species in the family Rutaceae; it primarily refers to Citrus × sinensis, which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange",
         "unitPrice": 265,
         "currency": "ZAR",
-        "name": "product 6"
+        "name": "Oranges"
     },
     {
         "id": "5f95dc4b8fddde120b803313",
@@ -79,10 +79,10 @@ export const products = [
         "isAvailable": false,
         "sku": "SKU007",
         "image": "https://via.placeholder.com/600/392537",
-        "description": "something here",
+        "description": "Tomato is the edible, often red berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America",
         "unitPrice": 276,
         "currency": "ZAR",
-        "name": "product 7"
+        "name": "Tomatoes"
     },
     {
         "id": "5f95dc4b366230f4a5be7dfe",
@@ -91,10 +91,10 @@ export const products = [
         "isAvailable": false,
         "sku": "SKU008",
         "image": "https://via.placeholder.com/600/372c93",
-        "description": "something here",
+        "description": "Banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa",
         "unitPrice": 287,
         "currency": "ZAR",
-        "name": "product 8"
+        "name": "Banana"
     },
     {
         "id": "5f95dc4b67f270aeabf41560",
@@ -103,10 +103,10 @@ export const products = [
         "isAvailable": false,
         "sku": "SKU009",
         "image": "https://via.placeholder.com/600/c70a4d",
-        "description": "something here",
+        "description": "Brinjal is a plant species in the nightshade family Solanaceae. Solanum melongena is grown worldwide for its edible fruit.",
         "unitPrice": 298,
         "currency": "ZAR",
-        "name": "product 9"
+        "name": "Egg Plant"
     },
     {
         "id": "5f95dc4b4dded9e100a2fc37",
@@ -115,9 +115,9 @@ export const products = [
         "isAvailable": true,
         "sku": "SKU0010",
         "image": "https://via.placeholder.com/600/4d564d",
-        "description": "something here",
+        "description": "Carrot is a root vegetable, usually orange in color, though purple, black, red, white, and yellow cultivars exist.",
         "unitPrice": 309,
         "currency": "ZAR",
-        "name": "abogogo"
+        "name": "Carrots"
     }
 ]

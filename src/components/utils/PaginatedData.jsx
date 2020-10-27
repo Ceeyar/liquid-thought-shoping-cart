@@ -66,7 +66,7 @@ class PaginatedData extends React.Component {
                 </li>
             );
         });
-        console.log('renderProducts ', renderProducts.length);
+
         return (
             <div>
                 {renderProducts.length ? [<ul className="content-horizontally">
