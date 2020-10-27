@@ -12,6 +12,10 @@ const Header = () => {
         setIsActive(!isActive);
      };
      const [ isActive, setIsActive ] = useState();
+     const [ show, setShow ] = useState(false);
+     const showCart = () => {
+        setShow(!show);
+     }
 
     return (
 
@@ -49,10 +53,10 @@ const Header = () => {
                     <NavbarItem href="https://twitter.com/siya_ndovela" isHidden="touch">
                         <Icon className="fa fa-twitter" style={{ color: "#55acee" }} />
                     </NavbarItem>
-                    <NavbarItem>
+                    <NavbarItem href="/cart">
                         <Field isGrouped>
                             <Control>
-                                <Button id="twitter" target="_blank" onClick={() => { }}>
+                                <Button id="twitter" target="_blank">
                                     <Icon className="fa fa-cart-arrow-down" />
                                     <span>Checkout</span>
                                 </Button>

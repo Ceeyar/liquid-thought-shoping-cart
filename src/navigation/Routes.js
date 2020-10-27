@@ -2,6 +2,7 @@ import Home from "../components/home/Home";
 import Products from "../components/Products";
 import ProductPreview from "../components/children/product-modal/ProductPreview";
 import noMatch from "../components/children/error-page/ErrorPage";
+import Cart from "../components/cart/Cart";
 
 const Routes = [
     {
@@ -20,6 +21,12 @@ const Routes = [
       title: "Product Details",
       path: "/product",
       component: ProductPreview,
+      exact: true
+    },
+    {
+      title: "Bag",
+      path: "/cart",
+      component: Cart,
       exact: true
     },
     {

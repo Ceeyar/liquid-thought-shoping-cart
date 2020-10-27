@@ -10,7 +10,7 @@ class PaginatedData extends React.Component {
         this.state = {
             products: this.props.products,
             currentPage: 1,
-            productsPerPage: 7
+            productsPerPage: 4
         };
     }
 

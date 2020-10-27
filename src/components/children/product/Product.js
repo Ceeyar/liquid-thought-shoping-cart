@@ -6,7 +6,7 @@ import {
     MediaLeft, Title, MediaRight, CardFooterItem, CardFooter
 } from "bloomer";
 import { withRouter } from "react-router";
-import { PRODUCT_IMAGE } from "../../../constants";
+import { FIRE_TRUCKED, PRODUCT_IMAGE, NO_DATA } from "../../../constants";
 
 const Product = (props) => {
 
@@ -17,7 +17,6 @@ const Product = (props) => {
     });
 
     const previewhandler = () => {
-
 
         const { history } = props;
 
@@ -41,9 +40,6 @@ const Product = (props) => {
         console.log('count', productState.quantity + 1);
     }
 
-    const nodata = "***";
-    const fireTrucked = (name) => name.length > 10 ? name.slice(0, 8) : name;
-
     return (
         <div className="">
             <div className="promo-product" onMouseLeave={() => setShowAction(!showAction)} onMouseOver={() => setShowAction(!showAction)}>
@@ -54,11 +50,11 @@ const Product = (props) => {
                                     <Image isSize="48x48" src={productState.image} alt="item" />
                                 </MediaLeft>
                                 <MediaContent>
-                                    <Title isSize={4}>{fireTrucked(productState.name)}</Title>
+                                    <Title isSize={4}>{FIRE_TRUCKED(productState.name)}</Title>
                                     {!productState.isNotPromo && <Subtitle isSize={6}>{productState.price} <span className="price">ZAR</span></Subtitle>}
                                 </MediaContent>
                                 <MediaRight>
-                                    <p className="price" tag="h6"> {props.description ? `${fireTrucked(props.description)}...` : nodata}</p>
+                                    <p className="price" tag="h6"> {props.description ? `${FIRE_TRUCKED(props.description)}...` : NO_DATA}</p>
                                 </MediaRight>
                             </Media>
                             {productState.isNotPromo &&
