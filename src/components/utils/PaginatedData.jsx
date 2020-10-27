@@ -1,23 +1,29 @@
+
 import React from 'react';
-import Product from '../children/product/Product';
-import { products } from './../../data/data';
 import './PaginatedData.scss';
+import { Icon } from 'bloomer';
+import Product from '../children/product/Product';
 
 class PaginatedData extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            products,
+            products: this.props.products,
             currentPage: 1,
-            productsPerPage: 4
+            productsPerPage: 7
         };
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(event) {
+    handleClick = (event) => {
         this.setState({
             currentPage: Number(event.target.id)
         });
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        this.setState({
+            products: nextProps.products
+        })
     }
 
     render() {
@@ -34,10 +40,13 @@ class PaginatedData extends React.Component {
                 id={product.id}
                 name={product.name}
                 image={product.image}
+                index={product.index}
+                isAvailable={product.isAvailable}
+                sku={product.sku}
                 isNotPromo={true}
                 price={product.unitPrice}
-                packaging={product.description}
-                quantity={product.isAvailable ? product.unitPrice : 0}
+                description={product.description}
+                quantity={product.isAvailable ? Math.ceil(Math.random() * 100) : 0}
             />
         });
 
@@ -52,21 +61,23 @@ class PaginatedData extends React.Component {
                     className={number === currentPage ? "action-button" : "button"}
                     key={number}
                     id={number}
-                    onClick={this.handleClick}
-                >
+                    onClick={this.handleClick}>
                     {number}
                 </li>
             );
         });
-
+        console.log('renderProducts ', renderProducts.length);
         return (
             <div>
-                <ul className="content-horizontally">
+                {renderProducts.length ? [<ul className="content-horizontally">
                     {renderProducts}
-                </ul>
+                </ul>,
                 <ul className="control-horizontally" id="page-numbers">
                     {renderPageNumbers}
-                </ul>
+                </ul>] : <div className="no-data">
+                    <Icon className="fa fa-thumbs-down" />
+                    <p> Your Search Returned No Products</p>
+                </div>}
             </div>
         );
     }

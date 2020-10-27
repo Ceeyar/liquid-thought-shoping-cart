@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
-    Content, Box, Container, Panel, PanelHeading, PanelBlock, Control, Input, Icon} from "bloomer";
+    Content, Box, Container, Panel, PanelHeading, PanelBlock, Control, Input, Icon
+} from "bloomer";
 import "./Products.scss";
 import Slider from "react-slick";
 import Product from "./children/product/Product";
@@ -11,17 +12,26 @@ import PaginatedData from "./utils/PaginatedData";
 
 class Products extends Component {
 
-    state = {
-        products: []
-    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            products,
+            searchData: products
+        }
+    };
 
-    componentDidMount() {
-
-
-        this.setState({
-            products: products ? products : []
+    handleChange = (event) => {
+        const searchData = this.state.products.filter(product => {
+            return product.name.toLowerCase().includes(event.target.value.toLowerCase());
         });
-    }
+        this.setState({
+            searchData
+        });
+    };
+
+    ranQuantity = () => {
+        Math.ceil(Math.random() * 100)
+    };
 
     render() {
         const settings = {
@@ -37,19 +47,20 @@ class Products extends Component {
             adaptiveHeight: true
         };
 
-
+        
         const promoProducts = this.state.products.map((product, index) => {
 
-            //only promote the first 11 products
-            return index <= 6 ? <Product key={product.id}
+            //only promote the first 4 products
+            return index <= 3 ? <Product key={product.id}
                 id={product.id}
                 name={product.name}
                 price={product.unitPrice}
                 image={product.image}
-                packaging={product.description}
-                quantity={product.isAvailable ? product.unitPrice : 0} /> : null
+                description={product.description}
+                quantity={product.isAvailable ? this.ranQuantity : 0} /> : null
         });
-        console.log("promo ", promoProducts)
+        const { searchData } = this.state;
+
         return (
             <div >
                 <Container className="children-content">
@@ -58,7 +69,7 @@ class Products extends Component {
                         <PanelBlock>
                             <Control hasIcons="left" style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                                 <Icon className="fa fa-search small" />
-                                <Input placeholder="Search" />
+                                <Input onChange={this.handleChange} placeholder="Search" />
                             </Control>
                         </PanelBlock>
 
@@ -70,9 +81,8 @@ class Products extends Component {
                     <Content className="mx-default">
                         <p className="text-left stock-in-store" tag="h4">Available in store:</p>
                     </Content>
-
-                    <Box className="mx-default">
-                        <PaginatedData products />
+                    <Box className="mx-default parent">
+                        <PaginatedData products={searchData} />
                     </Box>
                 </Container>
             </div>

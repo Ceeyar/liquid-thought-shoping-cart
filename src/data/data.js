@@ -118,19 +118,6 @@ export const products = [
         "description": "something here",
         "unitPrice": 309,
         "currency": "ZAR",
-        "name": "product 10"
-    },
-    {
-        "id": "5f95dc4b3747c5ac63444403",
-        "index": 10,
-        "isSale": true,
-        "isAvailable": false,
-        "sku": "SKU0011",
-        "image": "https://via.placeholder.com/600/1e71a2",
-        "description": "something here",
-        "unitPrice": 320,
-        "currency": "ZAR",
-        "name": "product 11"
-    },
-    
+        "name": "abogogo"
+    }
 ]
