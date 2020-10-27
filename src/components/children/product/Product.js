@@ -5,18 +5,16 @@ import {
     Image, Media, MediaContent, Subtitle,
     MediaLeft, Title, MediaRight
 } from "bloomer";
-import { PRODUCT_IMAGE } from "../../../constants/index";
-import { withRouter } from "react-router";
+    import { withRouter } from "react-router";
 
 const Product = (props) => {
 
-    const [productState, setproductState] = useState({
+    const [productState] = useState({
         ...props,
     });
 
     const previewhandler = () => {
 
-        console.log("props pushing ", productState);
 
         const { history } = props;
 
@@ -24,9 +22,14 @@ const Product = (props) => {
             pathname: "/product",
             search: "?pid=" + props.id,
             state: {
+                id: productState.id,
+                index: productState.index,
+                isAvailable: productState.isAvailable,
+                sku: productState.sku,
                 name: productState.name,
                 price: productState.price,
                 image: productState.image,
+                description: productState.description,
                 quantity: productState.quantity
             }
         });
@@ -48,7 +51,7 @@ const Product = (props) => {
                                 {!productState.isNotPromo && <Subtitle isSize={6}>{productState.price} <span className="price">ZAR</span></Subtitle>}
                             </MediaContent>
                             <MediaRight>
-                                <p className="price" tag="h6"> {props.packaging ? props.packaging : nodata}</p>
+                                <p className="price" tag="h6"> {props.description ? props.description : nodata}</p>
                             </MediaRight>
                         </Media>
                         {productState.isNotPromo &&

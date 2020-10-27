@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './ProductPreview.scss';
 import {
     Card, ModalCardHeader, Box, Media, MediaLeft, Image,
-    ModalCardFooter, Delete, ModalCardTitle, Button, ModalCardBody
+    ModalCardFooter, Delete, ModalCardTitle, Button, ModalCardBody, MediaContent
 } from 'bloomer';
 import { MediaRight } from 'bloomer/lib/components/Media/MediaRight';
 import { Subtitle } from 'bloomer/lib/elements/Subtitle';
@@ -39,13 +39,19 @@ const Preview = (props) => {
                     <Section>
                     <Subtitle isSize={6}>* Get it for {previewState.price} <span className='price'>ZAR</span> only</Subtitle>
                     <Subtitle isSize={6}>* Only limited to {previewState.quantity} per store</Subtitle>
+                    
                     </Section>
                 </MediaRight>
             </Media>
+            <Media>
+                <MediaContent>
+                    <Subtitle isSize={6}>* {`${previewState.description}, ${previewState.sku}`} </Subtitle>
+                </MediaContent>
+            </Media>
             </ModalCardBody>
                     <ModalCardFooter isDisplay='block' >
-                        <Button isColor='success'>+</Button>
-                        <Button isColor='danger'>-</Button>
+                        <Button onClick={() => {}} isColor='success'>+</Button>
+                        <Button onClick={() => {}} isColor='danger'>-</Button>
                     </ModalCardFooter>
                 </Card>
             </Box>
