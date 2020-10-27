@@ -29,9 +29,7 @@ class Products extends Component {
         });
     };
 
-    ranQuantity = () => {
-        Math.ceil(Math.random() * 100)
-    };
+    ranQuantity = () => Math.ceil(Math.random() * 100);
 
     render() {
         const settings = {
@@ -50,14 +48,14 @@ class Products extends Component {
         
         const promoProducts = this.state.products.map((product, index) => {
 
-            //only promote the first 4 products
-            return index <= 3 ? <Product key={product.id}
+            //only promote the first 4 products available products
+            return (index <= 4 && product.isAvailable)? <Product key={product.id}
                 id={product.id}
                 name={product.name}
                 price={product.unitPrice}
                 image={product.image}
                 description={product.description}
-                quantity={product.isAvailable ? this.ranQuantity : 0} /> : null
+                quantity={product.isAvailable ? this.ranQuantity() : 0} /> : null
         });
         const { searchData } = this.state;
 
