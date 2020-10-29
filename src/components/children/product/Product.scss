@@ -17,7 +17,7 @@ img {
 
 .promo-product {
     padding: 10px;
-    width: 400px;
+    min-width: 400px;
     cursor: pointer;
     transition: transform .2s;
 
@@ -39,4 +39,22 @@ img {
     color: $primaryColor;
     font-weight: bolder;
     font-size: medium;
+}
+
+//Mobile Friendly
+@media only screen and (max-width: 600px) {
+.promo-product {
+    min-width: 350px;
+    .price {
+        font-size: small;
+    }
+}
+.action-text {
+    font-size: small;
+}
+}
+@media only screen and (min-width: 600px) {
+    .promo-product {
+        min-width: 350px;
+    }
 }

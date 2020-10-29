@@ -1,53 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./Cart.scss";
-import { Modal, ModalBackground, ModalCard, ModalCardHeader, ModalCardTitle, ModalCardBody, ModalCardFooter, Button, Delete, Media, MediaLeft, Image, MediaContent, Title, MediaRight, Subtitle } from 'bloomer';
+import { Modal, ModalBackground, ModalCard, ModalCardHeader, ModalCardTitle, ModalCardBody, ModalCardFooter, Button, Delete, Media, MediaLeft, Image, MediaContent, Title, MediaRight, Subtitle, Input, Icon } from 'bloomer';
 import { useHistory } from 'react-router-dom';
-import { FIRE_TRUCKED, NO_DATA, PRODUCT_IMAGE } from '../../constants';
+import { FIRE_TRUCKED, PRODUCT_IMAGE } from '../../constants';
+import { connect, useDispatch, useSelector } from "react-redux";
+import { selectCartItems, removeItem, updateQuantity } from '../../redux/cartSlice';
 
-const Cart = () => {
-    const items = [{
-        "id": "5f95dc4b366230f4a5be7dfe",
-        "index": 7,
-        "isSale": false,
-        "isAvailable": false,
-        "sku": "SKU008",
-        "image": "https://via.placeholder.com/600/372c93",
-        "description": "Banana is an elongated, edible fruit – botanically a berry – produced by several kinds of large herbaceous flowering plants in the genus Musa",
-        "unitPrice": 287,
-        "currency": "ZAR",
-        "name": "Banana"
-    },
-    {
-        "id": "5f95dc4b67f270aeabf41560",
-        "index": 8,
-        "isSale": true,
-        "isAvailable": false,
-        "sku": "SKU009",
-        "image": "https://via.placeholder.com/600/c70a4d",
-        "description": "Brinjal is a plant species in the nightshade family Solanaceae. Solanum melongena is grown worldwide for its edible fruit.",
-        "unitPrice": 298,
-        "currency": "ZAR",
-        "name": "Egg Plant"
-    },
-    {
-        "id": "5f95dc4b4dded9e100a2fc37",
-        "index": 9,
-        "isSale": true,
-        "isAvailable": true,
-        "sku": "SKU0010",
-        "image": "https://via.placeholder.com/600/4d564d",
-        "description": "Carrot is a root vegetable, usually orange in color, though purple, black, red, white, and yellow cultivars exist.",
-        "unitPrice": 309,
-        "currency": "ZAR",
-        "name": "Carrots"
-    }
-    ];
+const Cart = (cart) => {
+
+    const dispatch = useDispatch();
+    const [items, setItems] = useState(useSelector(selectCartItems));
+
     let history = useHistory();
     const [isActive, setIsActive] = useState(true)
     const hideModal = () => {
         setIsActive(!isActive);
         history.push('/products');
     };
+    const subTotal = items ? items.reduce((sum, i) => sum + i.price * (i.cartQuantity ? i.cartQuantity : 0), 0) : 0;
+    const handleChange = (event) => {
+        let item = items.find(i => i.index == event.target.id);
+        item = {
+            ...item,
+            cartQuantity: parseInt(event.target.value)
+        }
+
+        dispatch(updateQuantity(item));
+        setItems(items);
+    }
+    const _removeItem = item => {
+        dispatch(removeItem(item))
+
+    };
+
+    useEffect(() => {
+        setItems(cart.cart.items);
+    })
 
     return (
         <Modal isActive={isActive}>
@@ -59,22 +47,33 @@ const Cart = () => {
                 </ModalCardHeader>
                 <ModalCardBody>
                     {
-                        items.map(item => {
+                        items.length ? items.map((item) => {
                             return (
-                                <Media>
+                                <Media key={item.id} id={item.id}>
                                     <MediaLeft>
                                         <Image isSize="48x48" src={PRODUCT_IMAGE + item.name.toLowerCase().replace(' ', '') + '.jpg'} alt="item" />
                                     </MediaLeft>
                                     <MediaContent>
                                         <Title isSize={4}>{FIRE_TRUCKED(item.name)}</Title>
-                                        <Subtitle isSize={6}>{item.quantity}</Subtitle>
+                                        {item.cartQuantity ? <Subtitle isSize={6}>{`${item.cartQuantity ? item.cartQuantity : 0} x R${item.price}`}</Subtitle> :
+                                            <Subtitle isSize={6} className="out-of-stock">out of stock</Subtitle>}
                                     </MediaContent>
+                                    <Input id={item.index} min="1" type="number" value={item.cartQuantity?item.cartQuantity : ""} className="quntity-input" onChange={handleChange} placeholder="quantity" />
                                     <MediaRight>
-                                        <Button onClick={() => { }} isColor="danger">-</Button>
+                                        <Button className="cart-action" onClick={()=>_removeItem(item)} isColor="danger">
+                                            <span className="action-text">X</span>
+                                        </Button>
                                     </MediaRight>
                                 </Media>
                             )
-                        })
+                        }) : ""
+                    }
+                    {
+                        items.length ? <span className="price pt-2">Total: R{subTotal ? subTotal.toFixed(2) : 0}</span> :
+                            <div className="no-data">
+                                <Icon className="fa fa-thumbs-down" />
+                                <p> You bag seems to be empty</p>
+                            </div>
                     }
                 </ModalCardBody>
                 <ModalCardFooter isDisplay="block" >
@@ -86,4 +85,7 @@ const Cart = () => {
     )
 };
 
-export default Cart;
+function mapStateToProps(state) {
+    return { cart: state.cart };
+}
+export default connect(mapStateToProps)(Cart);

@@ -36,30 +36,61 @@ class Products extends Component {
             dots: true,
             infinite: true,
             speed: 500,
+            centerPadding: "60px",
             autoplay: true,
             centerMode: true,
             slidesToShow: 3,
             slidesToScroll: 1,
             className: "slider variable-width",
             variableWidth: true,
-            adaptiveHeight: true
+            adaptiveHeight: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        initialSlide: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         };
 
         const promoProducts = this.state.products.map((product, index) => {
 
             //only promote the first 4 products available products
-            return (index <= 4 && product.isAvailable)? <Product key={product.id}
+            return (index <= 4 && product.isAvailable) ? <Product key={product.id}
                 id={product.id}
                 name={product.name}
                 price={product.unitPrice}
+                index={product.index}
+                isAvailable={product.isAvailable}
+                sku={product.sku}
                 image={product.image}
                 description={product.description}
-                quantity={product.isAvailable ? this.ranQuantity() : 0} /> : null
+                quantity={product.isAvailable ? this.ranQuantity() : 0}
+                cartQuantity={1} /> : null
         });
         const { searchData } = this.state;
 
         return (
-            <div >
+            <div className="container">
                 <Container className="children-content">
                     <Panel>
                         <PanelHeading>Products Main Page</PanelHeading>
@@ -78,7 +109,7 @@ class Products extends Component {
                     <Content className="mx-default">
                         <p className="text-left stock-in-store" tag="h4">Available in store:</p>
                     </Content>
-                    <Box className="mx-default parent">
+                    <Box className="mx-2 parent">
                         <PaginatedData products={searchData} />
                     </Box>
                 </Container>

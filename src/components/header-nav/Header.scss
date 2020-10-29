@@ -3,3 +3,25 @@
 .user-path {
     line-height: 4.4;
 }
+
+.cart-counter {
+    height: 26px;
+    width: 26px;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: $white;
+    margin-right: 10px;
+    font-size: 14px;
+    background-color: $khaki;
+}
+
+.cart {
+    font-size: 25px;
+}
+
+.goto {
+    
+}

@@ -36,7 +36,7 @@ class PaginatedData extends React.Component {
 
         const renderProducts = currentProducts.map(product => {
 
-            return <Product key={product.id} isNotPromo={product.isSale}
+            return <Product key={product.id}
                 id={product.id}
                 name={product.name}
                 image={product.image}

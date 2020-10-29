@@ -1,0 +1,14 @@
+@import './../../styles.scss';
+
+.stock-in-store {
+    
+    font-size: medium;
+    font-weight: bolder;
+}
+
+.product {
+    transition: transform .2s;
+    :hover {
+        transform: scale(1.5);
+    }
+}

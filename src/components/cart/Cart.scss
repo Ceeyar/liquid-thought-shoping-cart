@@ -3,3 +3,25 @@
 .cart-item {
     display: flex;
 }
+
+.quntity-input {
+    max-width: 100px;
+}
+
+.cart-action {
+    height: 34px;
+    width: 34px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .action-text {
+        font-size: small;
+    }
+}
+
+.out-of-stock {
+    color: $indianred;
+    font-size: 10px;
+}
