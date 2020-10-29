@@ -21,7 +21,7 @@ const Home = () => {
                             </MessageHeader>
                             <MessageBody>
                                 Not really sure what to <strong>show</strong>,
-                                here. Let's try vising the <a href="products">products</a> page maybe we'll find something to look at.
+                                here. Let's try vising the <strong><a href="products">products</a></strong> page maybe we'll find something to look at.
                                 Other pages that are not included in the test include <strong>About us</strong> - <strong>Our Services</strong> -
                             <strong> Jobs</strong> and <strong>Contact Us</strong>.
                         </MessageBody>

@@ -7,9 +7,9 @@ import {
 } from "bloomer";
 import { withRouter } from "react-router";
 import { FIRE_TRUCKED, PRODUCT_IMAGE, NO_DATA } from "../../../constants";
-import { useSelector, useDispatch } from "react-redux";
-import { selectCartItems, addItem } from "../../../redux/cartSlice";
-import { increment, selectCount } from "../../../redux/counterSlice";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../redux/cartSlice";
+import { increment } from "../../../redux/counterSlice";
 import { isMobile } from "bloomer/lib/bulma";
 
 
